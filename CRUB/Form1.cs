@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Data;
 using System.Windows.Forms;
-using CrystalDecisions.CrystalReports.Engine;
-using CrystalDecisions.ReportSource;
-using CrystalDecisions.Shared;
-
 
 namespace CRUB
 {
@@ -37,7 +33,7 @@ namespace CRUB
 
                 if (rdbid.Checked == true)
                 { 
-                    DataTable dt = oper.ConsultaConResultado("select *from empleados WHERE id_empleado = '" +txtBuscador.Text.Trim() +"'");
+                    DataTable dt = oper.ConsultaConResultado("select *from empleados WHERE num_empleado = '" +txtBuscador.Text.Trim() +"'");
                     dgvEmpleado.DataSource = dt;
                 }
               
@@ -97,76 +93,6 @@ namespace CRUB
         {
 
 
-        }
-
-        private void cREAREMPLEADOToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //FormEmpleado f = new FormEmpleado();
-            //f.Show();
-        }
-
-        private void cREARCARGOToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-            FormCargo f = new FormCargo();
-            f.Show();
-        }
-
-        private void bUSCARNOMINAToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FormBusquedaNomina f = new FormBusquedaNomina();
-            f.Show();
-        }
-
-        private void dETALLESDENOMINASToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FormDestalle_de_Nominas f = new FormDestalle_de_Nominas();
-            f.Show();
-        }
-
-        private void bUSCARCARGOToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FormCargo f = new FormCargo();
-            f.Show();
-        }
-
-        private void bUSCARCARGOToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            FormCargo f = new FormCargo();
-            f.Show();
-        }
-
-        private void txtBuscador_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnImprimir1_Click(object sender, EventArgs e)
-        {
-            operacion oper = new operacion();
-
-            DataSet dsempleado = new DataSet();
-
-            DataTable dte = oper.ConsultaConResultado("SELECT * FROM empleados");
-            dsempleado.Tables.Add(dte);
-
-            // crea el archivo XML en una la carpeta XML para los reporte 
-            dsempleado.WriteXml(@"C:\Users\leoni\Desktop\Programacion III\XML\empleados.xml");
-
-            ReporteDeEmpleado rpe = new ReporteDeEmpleado("VisorEmpleado.rpt");
-            rpe.Show();
-        }
-
-        private void bUSCAREMPLEADOToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FormEmpleado f = new FormEmpleado();
-            f.Show();
-        }
-
-        private void lISTADEEMPLEADOToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ListaDeEmpleado f = new ListaDeEmpleado();
-            f.Show();
         }
     }
 }
